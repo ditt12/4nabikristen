@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisah Nabi Kristen dan Token Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #token {
+            font-family: monospace;
+            background-color: #ddd;
+            padding: 10px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kisah Nabi Kristen dan Token Generator</h1>
+    </header>
+    <section>
+        <h2>Pilih Kisah Nabi:</h2>
+        <ul>
+            <li><a href="kisah/daniel.txt" target="_blank">Kisah Nabi Daniel</a></li>
+            <li><a href="kisah/ezekiel.txt" target="_blank">Kisah Nabi Ezekiel</a></li>
+            <li><a href="kisah/yeremia.txt" target="_blank">Kisah Nabi Yeremia</a></li>
+            <li><a href="kisah/yesaya.txt" target="_blank">Kisah Nabi Yesaya</a></li>
+        </ul>
+        <h2>Generate Token:</h2>
+        <button onclick="generateAndDisplayToken()">Generate Token</button>
+        <p id="token"></p>
+    </section>
+
+    <script>
+        // Fungsi untuk menghasilkan kata acak
+        function generateRandomWord(length = 5) {
+            const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let word = '';
+            for (let i = 0; i < length; i++) {
+                word += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return word;
+        }
+
+        // Fungsi untuk menghasilkan token dengan 20 kata acak
+        function generateToken() {
+            const tokenLength = 20;
+            const token = [];
+            for (let i = 0; i < tokenLength; i++) {
+                token.push(generateRandomWord());
+            }
+            return token.join(''); // Gabungkan kata tanpa tanda hubung
+        }
+
+        // Fungsi untuk menampilkan token
+        function generateAndDisplayToken() {
+            const token = generateToken();
+            document.getElementById('token').innerText = `Generated Token: ${token}`;
+        }
+    </script>
+</body>
+</html>
